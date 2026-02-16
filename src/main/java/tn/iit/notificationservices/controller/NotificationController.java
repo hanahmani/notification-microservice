@@ -1,20 +1,27 @@
 package tn.iit.notificationservices.controller;
 
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.iit.notificationservices.dto.PersonRequest;
+import tn.iit.notificationservices.dto.SignupRequest;
+import tn.iit.notificationservices.service.NotificationService;
 
 @RestController
 @RequestMapping("/notifications")
 public class NotificationController {
 
-    @PostMapping
-    public String receiveMessage(@RequestBody PersonRequest person) {
+    private final NotificationService service;
 
-        // Affiche dans la console de Hana
-        System.out.println("Message reçu de Yosr : Nom = "
-                + person.getNom() + ", Prénom = " + person.getPrenom());
+    // CONSTRUCTEUR MANUEL (au lieu de Lombok)
+    public NotificationController(NotificationService service) {
+        this.service = service;
+    }
 
-        // Réponse à Yosr
-        return "Message bien test sur Hana : " + person.getNom() + " " + person.getPrenom();
+    @PostMapping("/signup")
+    public ResponseEntity<String> signup(@RequestBody SignupRequest request) {
+
+        String response = service.handleSignup(request);
+
+        return ResponseEntity.ok(response);
     }
 }
