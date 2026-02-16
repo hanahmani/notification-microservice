@@ -1,22 +1,31 @@
 package tn.iit.userservice.controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import tn.iit.userservice.DTO.PersonRequest;
+import tn.iit.userservice.DTO.SignupRequest;
 
 @RestController
-@RequestMapping("/send")
+@RequestMapping("/users")
 public class SendController {
 
-    @PostMapping
-    public String sendToHana(@RequestParam String nom, @RequestParam String prenom) {
-        RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
 
-        String url = "http://192.168.1.33:8081/notifications"; // IP de PC Hana
+    // ✅ CONSTRUCTEUR OBLIGATOIRE
+    public SendController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
-        PersonRequest person = new PersonRequest(nom, prenom);
+    @PostMapping("/signup")
+    public ResponseEntity<String> signup(@RequestBody SignupRequest request) {
 
-        String response = restTemplate.postForObject(url, person, String.class);
+        String response = restTemplate.postForObject(
+                "http://172.20.10.9:8081/notifications/signup",
+                request,
+                String.class
+        );
 
-        return response;
+        return ResponseEntity.ok(
+                "User créé. Notification : " + response
+        );
     }
 }
