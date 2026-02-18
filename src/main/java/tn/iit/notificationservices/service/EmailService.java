@@ -17,9 +17,9 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
-        message.setSubject("Bienvenue sur notre plateforme 🎉");
+        message.setSubject("Bienvenue !");
         message.setText("Bonjour " + prenom + " " + nom +
-                ",\n\nBienvenue sur notre application !");
+                ", votre inscription est réussie.");
 
         mailSender.send(message);
     }
