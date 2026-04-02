@@ -33,7 +33,7 @@ L'équilibre entre urgence, coût et préférence utilisateur guide chaque notif
 | 2 | Alerte météo (pluie, orage) | API météo externe | SMS, WhatsApp, Push, Email | 🟠 Haute |
 | 3 | Détection maladie / ravageur | Diagnostic IA embarqué | SMS, WhatsApp, Push, Email | 🔴 Critique |
 | 4 | Alerte irrigation manquée | Planificateur + IoT | SMS, Push | 🟠 Haute |
-| 5 | Rapport hebdomadaire parcelle | Tâche planifiée (cron) | Email, WhatsApp, Push | 🟡 Moyenne |
+| 5 | Rapport hebdomadaire parcelle | Tâche planifiée (cron)         | Email, WhatsApp, Push | 🟡 Moyenne |
 | 6 | Confirmation d'action utilisateur | Action manuelle / dashboard | Email, Push | 🟢 Basse |
 | 7 | Notification de mise à jour système | Action admin | Email | 🟢 Basse |
 
@@ -46,7 +46,7 @@ L'équilibre entre urgence, coût et préférence utilisateur guide chaque notif
 | Capteurs IoT | Temps réel | Humidité, température, pluie |
 | Analyses IA | Asynchrone | Diagnostic maladie, recommandation |
 | API météo externe | Planifié / webhook | Prévisions pluie, alerte orage |
-| Tâche planifiée (cron) | Périodique | Rapport hebdo, bilan parcelle |
+| Tâche planifiée (cron) | Périodique | Rapport hebdomadaire, bilan parcelle |
 | Action manuelle | Événement utilisateur / admin | Confirmation action dashboard |
 
 ---
